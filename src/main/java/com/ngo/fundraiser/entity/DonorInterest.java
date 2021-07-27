@@ -7,7 +7,7 @@ public class DonorInterest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long donorInterestID;
+    private int donorInterestID;
 
     // Donor Interest to Donor table
     @ManyToOne
@@ -21,11 +21,11 @@ public class DonorInterest {
 
     private int BudgetedValue;
 
-    public Long getDonorInterestID() {
+    public int getDonorInterestID() {
         return donorInterestID;
     }
 
-    public void setDonorInterestID(Long donorInterestID) {
+    public void setDonorInterestID(int donorInterestID) {
         this.donorInterestID = donorInterestID;
     }
 

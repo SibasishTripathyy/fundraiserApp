@@ -8,7 +8,7 @@ public class CampaignBeneficiaries {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cBeneID;
+    private int cBeneID;
 
     // added for bi directional to campaigns table
     @ManyToOne
@@ -21,11 +21,11 @@ public class CampaignBeneficiaries {
 
     private int DonationValue;
 
-    public Long getCBeneID() {
+    public int getCBeneID() {
         return cBeneID;
     }
 
-    public void setCBeneID(Long cBeneID) {
+    public void setCBeneID(int cBeneID) {
         this.cBeneID = cBeneID;
     }
 

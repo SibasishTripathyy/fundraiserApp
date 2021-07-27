@@ -7,7 +7,7 @@ public class Beneficiaries {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long beneficiaryId;
+    private int beneficiaryId;
 
     private String Name;
     private String Address;
@@ -20,11 +20,11 @@ public class Beneficiaries {
 
     // getter and setter with getcBeanId vs getCBeanId issue
 
-    public Long getBeneficiaryId() {
+    public int getBeneficiaryId() {
         return beneficiaryId;
     }
 
-    public void setBeneficiaryId(Long beneficiaryId) {
+    public void setBeneficiaryId(int beneficiaryId) {
         this.beneficiaryId = beneficiaryId;
     }
 

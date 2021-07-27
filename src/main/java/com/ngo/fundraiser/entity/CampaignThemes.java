@@ -10,7 +10,7 @@ public class CampaignThemes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cTID;
+    private int cTID;
 
     // create relation with campaign and get cid
 
