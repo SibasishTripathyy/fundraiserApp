@@ -32,7 +32,7 @@ public class CampaignUtils {
 		campaignDto.setImageURL(campaign.getImageURL());
 		campaignDto.setTarget_Donation(campaign.getTarget_Donation());
 		campaignDto.setStatus(campaign.getStatus());
-		
+		campaignDto.setCreatedBy(String.valueOf(campaign.getCreatedBy().getUserID()));
 		return campaignDto;
 		
 	}
