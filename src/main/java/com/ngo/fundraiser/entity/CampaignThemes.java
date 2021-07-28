@@ -1,9 +1,6 @@
 package com.ngo.fundraiser.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CampaignThemes {
@@ -12,7 +9,13 @@ public class CampaignThemes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cTID;
 
-    // create relation with campaign and get cid
+    // From Campaign Themes to Campaigns
+    // Non owning side doesn't have a fk
 
-    // create relation with theme and get theme id
+
+    // From Campaign Themes to Themes
+    // Since FK name is same, adding "_fk"
+    @ManyToOne
+    @JoinColumn(name = "themeID_fk")
+    private Theme themeID_fk;
 }

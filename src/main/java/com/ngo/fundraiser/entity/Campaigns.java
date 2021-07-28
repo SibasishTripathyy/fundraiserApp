@@ -27,8 +27,12 @@ public class Campaigns {
     @OneToMany(mappedBy = "campaignId", cascade = CascadeType.ALL)
     private List<CampaignBeneficiaries> campaignBeneficiaries;
 
-    // From campaign themes table to campaign
+    // From Campaigns to Campaign Themes
+    // What will be the foreign key here?
 
+    // From campaigns to Donor Interest
+    @OneToMany(mappedBy = "campaignID", cascade = CascadeType.ALL)
+    private List<CampaignDonations> campaignDonations;
 
     public Campaigns() {
     }

@@ -1,9 +1,7 @@
 package com.ngo.fundraiser.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Donor {
@@ -19,7 +17,31 @@ public class Donor {
     private String email;
     private String LoginPassword;
 
+    // From Donor to Campaign Donations
+    @OneToMany(mappedBy = "donorID", cascade = CascadeType.ALL)
+    private List<CampaignDonations> campaignDonations;
+
+    // From Donor to Donor Interest
+    @OneToMany(mappedBy = "donorId", cascade = CascadeType.ALL)
+    private List<DonorInterest> donorInterests;
+
     public Donor() {
+    }
+
+    public List<CampaignDonations> getCampaignDonations() {
+        return campaignDonations;
+    }
+
+    public void setCampaignDonations(List<CampaignDonations> campaignDonations) {
+        this.campaignDonations = campaignDonations;
+    }
+
+    public List<DonorInterest> getDonorInterests() {
+        return donorInterests;
+    }
+
+    public void setDonorInterests(List<DonorInterest> donorInterests) {
+        this.donorInterests = donorInterests;
     }
 
     public Donor(Long donorId) {
