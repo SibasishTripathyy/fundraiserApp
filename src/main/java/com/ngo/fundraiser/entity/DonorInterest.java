@@ -1,5 +1,7 @@
 package com.ngo.fundraiser.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,16 +16,18 @@ import javax.persistence.Table;
 public class DonorInterest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
    	@Column(name = "DonorInterestID")
 	private long donorInterestID;
-	
+
+    // From DonorInterest to Theme
 	@ManyToOne
 	@JoinColumn(name="themeId")
-	private Theme themesID;
+	private Theme themeID;
 
+	// From DonorInterest to Donor
 	@ManyToOne
-	@JoinColumn(name="DonorID")
+	@JoinColumn(name="donorID")
 	private Donor donorID;
 
 	@Column(name = "BudgetedValue")
@@ -39,12 +43,12 @@ public class DonorInterest {
 		this.donorInterestID = donorInterestID;
 	}
 
-	public Theme getThemesID() {
-		return themesID;
+	public Theme getThemeID() {
+		return themeID;
 	}
 
-	public void setThemesID(Theme themesID) {
-		this.themesID = themesID;
+	public void setThemeID(Theme themeID) {
+		this.themeID = themeID;
 	}
 
 	public Donor getDonorID() {

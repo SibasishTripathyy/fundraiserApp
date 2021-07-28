@@ -1,11 +1,8 @@
 package com.ngo.fundraiser.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "theme")
 public class Theme {
@@ -18,7 +15,22 @@ public class Theme {
     private String campaignName;
     @Column
     private String keywords;
-    
+
+    /*
+    	Both the mappedBy values are same for
+    	CampaignThemes
+    	&
+    	DonorInterest
+     */
+
+	// From Themes to Campaign Themes
+	@OneToMany(mappedBy = "themeID", cascade = CascadeType.ALL)
+	private List<CampaignThemes> campaignThemes;
+
+	// From Themes to Donor Interest
+	@OneToMany(mappedBy = "themeID", cascade = CascadeType.ALL)
+	private List<DonorInterest> donorInterests;
+
 	public Theme() {}
 	public Long getThemeID() {
 		return themeID;

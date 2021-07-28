@@ -15,7 +15,7 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public Role saveRole(@RequestBody RoleDTO role) {
         return roleService.saveRole(role);
     }
@@ -25,7 +25,7 @@ public class RoleController {
 //        return roleService.addUserToRole(user_id, role);
 //    }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Role> getAllRoles() {
         return roleService.getAllRoles();
     }
