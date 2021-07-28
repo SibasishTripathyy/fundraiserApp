@@ -5,12 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Role")
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int roleID;
+    
+    @Column
     private String name;
+    @Column
     private String rights;
 
     public Role() {

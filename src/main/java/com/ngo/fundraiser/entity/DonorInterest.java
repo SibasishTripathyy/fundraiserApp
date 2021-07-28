@@ -1,55 +1,68 @@
 package com.ngo.fundraiser.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Donor_Interest")
 public class DonorInterest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long donorInterestID;
+   	@Column(name = "DonorInterestID")
+	private long donorInterestID;
+	
+	@ManyToOne
+	@JoinColumn(name="themeId")
+	private Theme themesID;
 
-    // Donor Interest to Donor table
-    @ManyToOne
-    @JoinColumn(name = "donorId")
-    private Donor donorId;
+	@ManyToOne
+	@JoinColumn(name="DonorID")
+	private Donor donorID;
 
-    // Donor Interest to Themes table
-    @ManyToOne
-    @JoinColumn(name = "themeId")
-    private Theme themeId;
+	@Column(name = "BudgetedValue")
+	private long budgetedValue;
 
-    private int BudgetedValue;
+	public DonorInterest() {}
 
-    public Long getDonorInterestID() {
-        return donorInterestID;
-    }
+	public long getDonorInterestID() {
+		return donorInterestID;
+	}
 
-    public void setDonorInterestID(Long donorInterestID) {
-        this.donorInterestID = donorInterestID;
-    }
+	public void setDonorInterestID(long donorInterestID) {
+		this.donorInterestID = donorInterestID;
+	}
 
-    public Donor getDonorId() {
-        return donorId;
-    }
+	public Theme getThemesID() {
+		return themesID;
+	}
 
-    public void setDonorId(Donor donorId) {
-        this.donorId = donorId;
-    }
+	public void setThemesID(Theme themesID) {
+		this.themesID = themesID;
+	}
 
-    public Theme getThemeId() {
-        return themeId;
-    }
+	public Donor getDonorID() {
+		return donorID;
+	}
 
-    public void setThemeId(Theme themeId) {
-        this.themeId = themeId;
-    }
+	public void setDonorID(Donor donorID) {
+		this.donorID = donorID;
+	}
 
-    public int getBudgetedValue() {
-        return BudgetedValue;
-    }
+	public long getBudgetedValue() {
+		return budgetedValue;
+	}
 
-    public void setBudgetedValue(int budgetedValue) {
-        BudgetedValue = budgetedValue;
-    }
-}
+	public void setBudgetedValue(long budgetedValue) {
+		this.budgetedValue = budgetedValue;
+	}
+	
+	
+	}
+	

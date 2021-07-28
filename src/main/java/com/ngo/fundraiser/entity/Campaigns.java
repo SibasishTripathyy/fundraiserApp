@@ -4,40 +4,42 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "campaigns")
 public class Campaigns {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int CampaignID;
-
+    @Column
+    private Long CampaignID;
+    
+    @Column(name = "name")
     private String Name;
+    @Column(name = "imageurl")
     private String ImageURL;
+    @Column(name = "message")
     private String Message;
+    @Column(name = "target_donation")
     private String Target_Donation;
+    @Column(name = "start_date")
     private String Start_Date;
+    @Column(name = "end_date")
     private String End_Date;
+    @Column(name = "status")
     private String Status;
 
     // userID FK
     @ManyToOne
-    @JoinColumn(name = "CreatedBy")
+    @JoinColumn(name = "userID")
     private User CreatedBy;
 
-    // campaign to beneficiaries relation
-    @OneToMany(mappedBy = "campaignId", cascade = CascadeType.ALL)
-    private List<CampaignBeneficiaries> campaignBeneficiaries;
-
-    // From Campaigns to Campaign Themes
-    // What will be the foreign key here?
-
-    // From campaigns to Donor Interest
-    @OneToMany(mappedBy = "campaignID", cascade = CascadeType.ALL)
-    private List<CampaignDonations> campaignDonations;
+    // campaign beneficiaries relation
+//    @OneToMany(mappedBy = "campaignId", cascade = CascadeType.ALL)
+//    private List<CampaignBeneficiaries> campaignBeneficiaries;
 
     public Campaigns() {
     }
 
-    public Campaigns(int campaignID, String name, String imageURL, String message, String target_Donation,
+    public Campaigns(Long campaignID, String name, String imageURL, String message, String target_Donation,
                      String start_Date, String end_Date, String status, User createdBy) {
         CampaignID = campaignID;
         Name = name;
@@ -50,11 +52,11 @@ public class Campaigns {
         CreatedBy = createdBy;
     }
 
-    public int getCampaignID() {
+    public Long getCampaignID() {
         return CampaignID;
     }
 
-    public void setCampaignID(int campaignID) {
+    public void setCampaignID(Long campaignID) {
         CampaignID = campaignID;
     }
 

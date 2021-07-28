@@ -1,54 +1,50 @@
 package com.ngo.fundraiser.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Beneficiaries")
 public class Beneficiaries {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long beneficiaryID;
+	
+	@Column(name = "Name")
+	private String name;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long beneficiaryId;
+	@Column(name = "Address")
+	private String address;
+	
+	@OneToMany(mappedBy = "beneficiaryID")
+	private List<CampaignBeneficiaries> campaignBeneficaries;
+	public Beneficiaries() {}
 
-    private String Name;
-    private String Address;
+	public long getBeneficiaryID() {
+		return beneficiaryID;
+	}
 
-    // No field for fk mapping was given
-    // created CBeneID as fk
-    @ManyToOne
-    @JoinColumn(name = "cBeneID")
-    private CampaignBeneficiaries cBeneID;
+	public void setBeneficiaryID(long beneficiaryID) {
+		this.beneficiaryID = beneficiaryID;
+	}
 
-    // getter and setter with getcBeanId vs getCBeanId issue
+	public String getName() {
+		return name;
+	}
 
-    public Long getBeneficiaryId() {
-        return beneficiaryId;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setBeneficiaryId(Long beneficiaryId) {
-        this.beneficiaryId = beneficiaryId;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public String getName() {
-        return Name;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public CampaignBeneficiaries getCBeneID() {
-        return cBeneID;
-    }
-
-    public void setCBeneID(CampaignBeneficiaries cBeneID) {
-        this.cBeneID = cBeneID;
-    }
+	
 }

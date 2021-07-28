@@ -1,21 +1,65 @@
 package com.ngo.fundraiser.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import antlr.collections.List;
 
 @Entity
+@Table(name = "campaign_themes")
 public class CampaignThemes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cTID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
+	private Long cTID;
+    
+    @Column(name = "CampaignID")
+	private long campaignID;
 
-    // From Campaign Themes to Campaigns
-    // Non owning side doesn't have a fk
-
-
-    // From Campaign Themes to Themes
-    // Since FK name is same, adding "_fk"
     @ManyToOne
-    @JoinColumn(name = "themeID_fk")
-    private Theme themeID_fk;
+	@JoinColumn(name="themeID")
+	private Theme themeID;
+    
+   
+    public CampaignThemes() {}
+    
+	public long getCampaignID() {
+		return campaignID;
+	}
+
+	public void setCampaignID(long campaignID) {
+		this.campaignID = campaignID;
+	}
+
+
+	public Theme getThemeID() {
+		return themeID;
+	}
+
+	public void setThemeID(Theme themeID) {
+		this.themeID = themeID;
+	}
+	
+	public Long getcTID() {
+		return cTID;
+	}
+
+	public void setcTID(Long cTID) {
+		this.cTID = cTID;
+	}
+	
+
+    // create relation with campaign and get cid
+
+    // create relation with theme and get theme id
+    
+    
 }

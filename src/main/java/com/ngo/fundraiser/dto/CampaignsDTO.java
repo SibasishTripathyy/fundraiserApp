@@ -10,8 +10,13 @@ public class CampaignsDTO {
     private String Start_Date;
     private String End_Date;
     private String Status;
-    private int CreatedBy;
-
+    private String CreatedBy;
+    
+    
+	public CampaignsDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getCampaignID() {
 		return CampaignID;
 	}
@@ -60,11 +65,18 @@ public class CampaignsDTO {
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public int getCreatedBy() {
+	public String getCreatedBy() {
 		return CreatedBy;
 	}
-	public void setCreatedBy(int createdBy) {
+	public void setCreatedBy(String createdBy) {
 		CreatedBy = createdBy;
 	}
+	@Override
+	public String toString() {
+		return "CampaignsDTO [CampaignID=" + CampaignID + ", Name=" + Name + ", ImageURL=" + ImageURL + ", Message="
+				+ Message + ", Target_Donation=" + Target_Donation + ", Start_Date=" + Start_Date + ", End_Date="
+				+ End_Date + ", Status=" + Status + ", CreatedBy=" + CreatedBy + "]";
+	}
+	
     
 }

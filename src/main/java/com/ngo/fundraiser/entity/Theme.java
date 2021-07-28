@@ -1,63 +1,43 @@
 package com.ngo.fundraiser.entity;
 
-import javax.persistence.*;
-import java.util.List;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
+@Table(name = "theme")
 public class Theme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long themeID;
+    @Column
     private String campaignName;
+    @Column
     private String keywords;
-
-    // From Theme to Donor Interest
-    @OneToMany(mappedBy = "themeId", cascade = CascadeType.ALL)
-    private List<DonorInterest> donorInterests;
-
-    // From Theme to Campaign Themes
-    @OneToMany(mappedBy = "themeID_fk", cascade = CascadeType.ALL)
-    private List<CampaignThemes> campaignThemes;
-
-
-    public List<CampaignThemes> getCampaignThemes() {
-        return campaignThemes;
-    }
-
-    public void setCampaignThemes(List<CampaignThemes> campaignThemes) {
-        this.campaignThemes = campaignThemes;
-    }
-
-    public List<DonorInterest> getDonorInterests() {
-        return donorInterests;
-    }
-
-    public void setDonorInterests(List<DonorInterest> donorInterests) {
-        this.donorInterests = donorInterests;
-    }
-
-    public Long getThemeID() {
-        return themeID;
-    }
-
-    public void setThemeID(Long themeID) {
-        this.themeID = themeID;
-    }
-
-    public String getCampaignName() {
-        return campaignName;
-    }
-
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
-    }
-
-    public String getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
-    }
+    
+	public Theme() {}
+	public Long getThemeID() {
+		return themeID;
+	}
+	public void setThemeID(Long themeID) {
+		this.themeID = themeID;
+	}
+	public String getCampaignName() {
+		return campaignName;
+	}
+	public void setCampaignName(String campaignName) {
+		this.campaignName = campaignName;
+	}
+	public String getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
+    
+    
 }
