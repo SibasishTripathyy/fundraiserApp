@@ -10,7 +10,8 @@ public class CampaignsDTO {
     private String Start_Date;
     private String End_Date;
     private String Status;
-    private String CreatedBy;
+    private int CreatedBy;
+
 	public Long getCampaignID() {
 		return CampaignID;
 	}
@@ -59,10 +60,10 @@ public class CampaignsDTO {
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public String getCreatedBy() {
+	public int getCreatedBy() {
 		return CreatedBy;
 	}
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(int createdBy) {
 		CreatedBy = createdBy;
 	}
     
