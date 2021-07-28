@@ -4,23 +4,32 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "campaigns")
 public class Campaigns {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long CampaignID;
-
+    
+    @Column(name = "name")
     private String Name;
+    @Column(name = "imageurl")
     private String ImageURL;
+    @Column(name = "message")
     private String Message;
+    @Column(name = "target_donation")
     private String Target_Donation;
+    @Column(name = "start_date")
     private String Start_Date;
+    @Column(name = "end_date")
     private String End_Date;
+    @Column(name = "status")
     private String Status;
 
     // userID FK
     @ManyToOne
-    @JoinColumn(name = "CreatedBy")
+    @JoinColumn(name = "userID")
     private User CreatedBy;
 
     // campaign beneficiaries relation
