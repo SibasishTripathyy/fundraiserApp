@@ -5,9 +5,16 @@ public class DonorDTO {
     private String name;
     private String address; 
     private String contactDetails;
-    private boolean keepAnonymous;
+    private Boolean keepAnonymous;
     private String email;
     private String LoginPassword;
+    private String message;
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public Long getDonorId() {
 		return donorId;
 	}
@@ -32,10 +39,10 @@ public class DonorDTO {
 	public void setContactDetails(String contactDetails) {
 		this.contactDetails = contactDetails;
 	}
-	public boolean isKeepAnonymous() {
+	public Boolean isKeepAnonymous() {
 		return keepAnonymous;
 	}
-	public void setKeepAnonymous(boolean keepAnonymous) {
+	public void setKeepAnonymous(Boolean keepAnonymous) {
 		this.keepAnonymous = keepAnonymous;
 	}
 	public String getEmail() {

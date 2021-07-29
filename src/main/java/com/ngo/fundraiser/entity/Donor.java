@@ -23,7 +23,7 @@ public class Donor {
     @Column
     private String contactDetails;
     @Column
-    private boolean keepAnonymous;
+    private Boolean keepAnonymous;
     @Column
     private String email;
     @Column
@@ -68,11 +68,11 @@ public class Donor {
         this.contactDetails = contactDetails;
     }
 
-    public boolean isKeepAnonymous() {
+    public Boolean isKeepAnonymous() {
         return keepAnonymous;
     }
 
-    public void setKeepAnonymous(boolean keepAnonymous) {
+    public void setKeepAnonymous(Boolean keepAnonymous) {
         this.keepAnonymous = keepAnonymous;
     }
 

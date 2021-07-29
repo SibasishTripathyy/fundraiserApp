@@ -9,34 +9,34 @@ public class CampaignBeneficiaries {
 	@GeneratedValue
 	@Id
 	@Column(name = "CBeneID")
-	private long cBeneID;
+	private Long cBeneID;
 
 	@ManyToOne
 	@JoinColumn(name="CampaignID")
-	CampaignThemes campaignID;
+	private Campaigns campaignID;
 	
 	@ManyToOne
 	@JoinColumn(name="beneficiaryID")
 	private Beneficiaries beneficiaryID;
 
 	@Column(name = "DonationValue")
-	private long donationValue;
+	private Long donationValue;
 
 	public CampaignBeneficiaries() {}
 
-	public long getcBeneID() {
+	public Long getcBeneID() {
 		return cBeneID;
 	}
 
-	public void setcBeneID(long cBeneID) {
+	public void setcBeneID(Long cBeneID) {
 		this.cBeneID = cBeneID;
 	}
 
-	public CampaignThemes getCampaignID() {
+	public Campaigns getCampaignID() {
 		return campaignID;
 	}
 
-	public void setCampaignID(CampaignThemes campaignID) {
+	public void setCampaignID(Campaigns campaignID) {
 		this.campaignID = campaignID;
 	}
 
@@ -48,11 +48,11 @@ public class CampaignBeneficiaries {
 		this.beneficiaryID = beneficiaryID;
 	}
 
-	public long getDonationValue() {
+	public Long getDonationValue() {
 		return donationValue;
 	}
 
-	public void setDonationValue(long donationValue) {
+	public void setDonationValue(Long donationValue) {
 		this.donationValue = donationValue;
 	}
 

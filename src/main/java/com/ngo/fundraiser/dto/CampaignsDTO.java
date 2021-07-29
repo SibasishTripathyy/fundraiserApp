@@ -11,11 +11,17 @@ public class CampaignsDTO {
     private String End_Date;
     private String Status;
     private String CreatedBy;
+    private String info;
     
-    
+	
+	
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
 	public CampaignsDTO() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Long getCampaignID() {
 		return CampaignID;
@@ -38,8 +44,8 @@ public class CampaignsDTO {
 	public String getMessage() {
 		return Message;
 	}
-	public void setMessage(String message) {
-		Message = message;
+	public void setMessage(String Message) {
+		this.Message = Message;
 	}
 	public String getTarget_Donation() {
 		return Target_Donation;

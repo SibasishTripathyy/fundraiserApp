@@ -2,16 +2,24 @@ package com.ngo.fundraiser.dto;
 
 public class RoleDTO {
 
-    private int roleID;
+    private Integer roleID;
     private String name;
     private String rights;
+    private String message;
 
+    public String getMessage() {
+		return message;
+	}
 
-    public int getRoleID() {
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Integer getRoleID() {
         return roleID;
     }
 
-    public void setRoleID(int roleID) {
+    public void setRoleID(Integer roleID) {
         this.roleID = roleID;
     }
 

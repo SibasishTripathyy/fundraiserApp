@@ -31,6 +31,21 @@ public class UserService {
         user.setRole(role);
         return UserUtils.convertUsertoUserDto( userRepository.save(user));
     }
+    
+    public UserDTO loginUser(UserDTO userDto)
+    {
+    	List<User> user=this.userRepository.findByNameAndPassword(userDto.getName(),userDto.getPassword());
+    	if(user.size()>0)
+    	{
+    		return UserUtils.convertUsertoUserDto(user.get(0));
+    	}
+    	else
+    	{
+    		UserDTO invalidUser=new UserDTO();
+    		invalidUser.setMessage("wrong username and password");
+    		return invalidUser;
+    	}
+    }
 
     public List<UserDTO> getAllUsers() {
 

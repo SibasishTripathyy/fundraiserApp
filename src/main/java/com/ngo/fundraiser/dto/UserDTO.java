@@ -2,17 +2,25 @@ package com.ngo.fundraiser.dto;
 
 public class UserDTO {
 
-    private int userID;
+    private Integer userID;
     private String name;
     private String password;
+    private Integer roleID;
+    private String message;
 
-    private int roleID;
+    public String getMessage() {
+		return message;
+	}
 
-    public int getUserID() {
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Integer getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 
@@ -32,11 +40,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public int getRoleID() {
+    public Integer getRoleID() {
         return roleID;
     }
 
-    public void setRoleID(int roleID) {
+    public void setRoleID(Integer roleID) {
         this.roleID = roleID;
     }
 }

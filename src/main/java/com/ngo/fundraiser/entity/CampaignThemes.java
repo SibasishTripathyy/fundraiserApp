@@ -21,8 +21,9 @@ public class CampaignThemes {
     @Column
 	private Long cTID;
     
-    @Column(name = "CampaignID")
-	private long campaignID;
+    @ManyToOne
+	@JoinColumn(name="CampaignID")
+	private Campaigns campaignID;
 
     @ManyToOne
 	@JoinColumn(name="themeID")
@@ -31,11 +32,11 @@ public class CampaignThemes {
    
     public CampaignThemes() {}
     
-	public long getCampaignID() {
+	public Campaigns getCampaignID() {
 		return campaignID;
 	}
 
-	public void setCampaignID(long campaignID) {
+	public void setCampaignID(Campaigns campaignID) {
 		this.campaignID = campaignID;
 	}
 

@@ -2,16 +2,23 @@ package com.ngo.fundraiser.dto;
 
 public class CampaignDonationDTO {
 
-	private long recieptID;
+	private Long recieptID;
 	private Long CampaignID;
 	private Long donorId;
 	private String date;
-	private long donationValue;
+	private Long donationValue;
 	private String paymentDetails;
-	public long getRecieptID() {
+	private String message;
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public Long getRecieptID() {
 		return recieptID;
 	}
-	public void setRecieptID(long recieptID) {
+	public void setRecieptID(Long recieptID) {
 		this.recieptID = recieptID;
 	}
 	public Long getCampaignID() {
@@ -32,10 +39,10 @@ public class CampaignDonationDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public long getDonationValue() {
+	public Long getDonationValue() {
 		return donationValue;
 	}
-	public void setDonationValue(long donationValue) {
+	public void setDonationValue(Long donationValue) {
 		this.donationValue = donationValue;
 	}
 	public String getPaymentDetails() {

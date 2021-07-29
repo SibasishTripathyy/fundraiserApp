@@ -15,11 +15,11 @@ public class CampaignDonation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	@Column(name = "ReceiptID")
-	private long recieptID;
+	private Long recieptID;
 
 	@ManyToOne
 	@JoinColumn(name="campaignID")
-	private CampaignThemes campaignID;
+	private Campaigns campaignID;
 	
 
 	@ManyToOne
@@ -30,26 +30,26 @@ public class CampaignDonation {
 	private String date;
 
 	@Column(name = "DonationValue")
-	private long donationValue;
+	private Long donationValue;
 
 	@Column(name = "PaymentDetails")
 	private String paymentDetails;
 	
 	public CampaignDonation() {	}
 	
-	public long getRecieptID() {
+	public Long getRecieptID() {
 		return recieptID;
 	}
 
-	public void setRecieptID(long recieptID) {
+	public void setRecieptID(Long recieptID) {
 		this.recieptID = recieptID;
 	}
 
-	public CampaignThemes getCampaignID() {
+	public Campaigns getCampaignID() {
 		return campaignID;
 	}
 
-	public void setCampaignID(CampaignThemes campaignID) {
+	public void setCampaignID(Campaigns campaignID) {
 		this.campaignID = campaignID;
 	}
 
@@ -69,11 +69,11 @@ public class CampaignDonation {
 		this.date = date;
 	}
 
-	public long getDonationValue() {
+	public Long getDonationValue() {
 		return donationValue;
 	}
 
-	public void setDonationValue(long donationValue) {
+	public void setDonationValue(Long donationValue) {
 		this.donationValue = donationValue;
 	}
 

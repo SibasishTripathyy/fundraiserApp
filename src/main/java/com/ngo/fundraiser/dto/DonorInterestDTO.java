@@ -5,6 +5,14 @@ public class DonorInterestDTO {
 	 private Long themeID;
 	 private Long donorId;
 	 private long budgetedValue;
+	 private String message;
+	 
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public long getDonorInterestID() {
 		return donorInterestID;
 	}

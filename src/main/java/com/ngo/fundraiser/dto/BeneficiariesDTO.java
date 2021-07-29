@@ -5,6 +5,13 @@ public class BeneficiariesDTO {
 	private long beneficiaryID;
 	private String name;
 	private String address;
+	private String message;
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public long getBeneficiaryID() {
 		return beneficiaryID;
 	}

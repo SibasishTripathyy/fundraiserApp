@@ -31,6 +31,13 @@ public class Campaigns {
     @ManyToOne
     @JoinColumn(name = "userID")
     private User CreatedBy;
+    
+    @OneToMany(mappedBy = "campaignID")
+    List<CampaignBeneficiaries> campaignBeneficiaries;
+    @OneToMany(mappedBy = "campaignID")
+    List<CampaignThemes> campaignThemes;
+    @OneToMany(mappedBy = "campaignID")
+    List<CampaignDonation> campaignDonation;
 
     // campaign beneficiaries relation
 //    @OneToMany(mappedBy = "campaignId", cascade = CascadeType.ALL)

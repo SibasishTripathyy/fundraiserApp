@@ -20,9 +20,15 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/")
-    public UserDTO saveUser(@RequestBody UserDTO userDTO) {
+    public UserDTO  saveUser(@RequestBody UserDTO userDTO) {
 
         return userService.saveUser(userDTO);
+    }
+    
+    @PostMapping("/login")
+    public UserDTO  loginUser(@RequestBody UserDTO userDTO) {
+
+        return userService.loginUser(userDTO);
     }
 
     @GetMapping("/")

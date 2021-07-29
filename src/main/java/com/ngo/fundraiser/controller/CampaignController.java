@@ -22,8 +22,6 @@ public class CampaignController {
     @PostMapping(value="/create", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody CampaignsDTO createCampaign(@RequestBody CampaignsDTO campaignsDTO)
     {
-    	
-    	System.out.println(campaignsDTO);
     	return this.campaignService.createCampaign(campaignsDTO);
     }
     
@@ -38,4 +36,17 @@ public class CampaignController {
     {
     	return this.campaignService.deleteCampaign(campaignsDTO);
     }
+    
+    @GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+    public List<CampaignsDTO> getAllCampaigns()
+    {
+    	return this.campaignService.getAllCampaigns();
+    }
+    
+    @GetMapping(value = "/usercampaign/{id}",produces =MediaType.APPLICATION_JSON_VALUE)
+    public List<CampaignsDTO> getCampaignOfUser(@PathVariable(value = "id") String id)
+    {
+    	return this.campaignService.getCampaignById(id);
+    }
+    
 }
