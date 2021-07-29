@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -19,11 +19,11 @@ public class User {
     @Column
     private String password;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     @OneToMany(mappedBy = "CreatedBy")
     private List<Campaigns> campaigns;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
     @OneToOne
     @JoinColumn(name = "roleID", referencedColumnName = "roleID")
     private Role role;

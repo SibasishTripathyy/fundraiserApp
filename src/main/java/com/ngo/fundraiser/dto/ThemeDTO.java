@@ -1,13 +1,13 @@
 package com.ngo.fundraiser.dto;
 
 public class ThemeDTO {
-	private Long themeID;
+	private int themeID;
     private String campaignName;
     private String keywords;
-	public Long getThemeID() {
+	public int getThemeID() {
 		return themeID;
 	}
-	public void setThemeID(Long themeID) {
+	public void setThemeID(int themeID) {
 		this.themeID = themeID;
 	}
 	public String getCampaignName() {

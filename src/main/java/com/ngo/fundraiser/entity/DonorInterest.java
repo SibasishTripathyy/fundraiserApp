@@ -18,7 +18,7 @@ public class DonorInterest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
    	@Column(name = "DonorInterestID")
-	private long donorInterestID;
+	private int donorInterestID;
 
     // From DonorInterest to Theme
 	@ManyToOne
@@ -39,7 +39,7 @@ public class DonorInterest {
 		return donorInterestID;
 	}
 
-	public void setDonorInterestID(long donorInterestID) {
+	public void setDonorInterestID(int donorInterestID) {
 		this.donorInterestID = donorInterestID;
 	}
 

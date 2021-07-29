@@ -1,34 +1,40 @@
 package com.ngo.fundraiser.dto;
 
 public class DonorInterestDTO {
-	private long donorInterestID;
-	 private Long themeID;
-	 private Long donorId;
-	 private long budgetedValue;
-	public long getDonorInterestID() {
+	private int donorInterestID;
+	private int themeID;
+	private int donorId;
+	private int budgetedValue;
+
+	public int getDonorInterestID() {
 		return donorInterestID;
 	}
-	public void setDonorInterestID(long donorInterestID) {
+
+	public void setDonorInterestID(int donorInterestID) {
 		this.donorInterestID = donorInterestID;
 	}
-	public Long getThemeID() {
+
+	public int getThemeID() {
 		return themeID;
 	}
-	public void setThemeID(Long themeID) {
+
+	public void setThemeID(int themeID) {
 		this.themeID = themeID;
 	}
-	public Long getDonorId() {
+
+	public int getDonorId() {
 		return donorId;
 	}
-	public void setDonorId(Long donorId) {
+
+	public void setDonorId(int donorId) {
 		this.donorId = donorId;
 	}
-	public long getBudgetedValue() {
+
+	public int getBudgetedValue() {
 		return budgetedValue;
 	}
-	public void setBudgetedValue(long budgetedValue) {
+
+	public void setBudgetedValue(int budgetedValue) {
 		this.budgetedValue = budgetedValue;
 	}
-	 
-	 
 }

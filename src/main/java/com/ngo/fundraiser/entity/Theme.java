@@ -10,7 +10,7 @@ public class Theme {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private Long themeID;
+    private int themeID;
     @Column
     private String campaignName;
     @Column
@@ -23,19 +23,19 @@ public class Theme {
     	DonorInterest
      */
 
-	// From Themes to Campaign Themes
-	@OneToMany(mappedBy = "themeID", cascade = CascadeType.ALL)
-	private List<CampaignThemes> campaignThemes;
+//	// From Themes to Campaign Themes
+//	@OneToMany(mappedBy = "themeID", cascade = CascadeType.ALL)
+//	private List<CampaignThemes> campaignThemes;
 
 	// From Themes to Donor Interest
 	@OneToMany(mappedBy = "themeID", cascade = CascadeType.ALL)
 	private List<DonorInterest> donorInterests;
 
 	public Theme() {}
-	public Long getThemeID() {
+	public int getThemeID() {
 		return themeID;
 	}
-	public void setThemeID(Long themeID) {
+	public void setThemeID(int themeID) {
 		this.themeID = themeID;
 	}
 	public String getCampaignName() {

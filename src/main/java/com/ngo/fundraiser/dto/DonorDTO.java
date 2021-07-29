@@ -1,17 +1,17 @@
 package com.ngo.fundraiser.dto;
 
 public class DonorDTO {
-	private Long donorId;
+	private int donorId;
     private String name;
     private String address; 
     private String contactDetails;
     private boolean keepAnonymous;
     private String email;
     private String LoginPassword;
-	public Long getDonorId() {
+	public int getDonorId() {
 		return donorId;
 	}
-	public void setDonorId(Long donorId) {
+	public void setDonorId(int donorId) {
 		this.donorId = donorId;
 	}
 	public String getName() {

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //import jdk.jfr.Enabled;
 
 @SpringBootApplication
-//@EnableJpaRepositories(basePackages = "com.ngo.fundraiser")
+@EnableJpaRepositories(basePackages = "com.ngo.fundraiser")
 public class FundraiserApplication {
 
 	public static void main(String[] args) {
