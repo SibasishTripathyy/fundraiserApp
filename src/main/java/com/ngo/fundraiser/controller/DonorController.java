@@ -31,6 +31,10 @@ public class DonorController {
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<CampaignDonationDTO> getAllDonationOfADonor(@PathVariable(name = "id") String id)
     {
-    	return this.getAllDonationOfADonor(id);
+    	return this.donorService.getAllDonationOfADonor(id);
+    }
+    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DonorDTO> getAllDonationOfADonor(){
+    	return this.donorService.getAllDonor();
     }
 }

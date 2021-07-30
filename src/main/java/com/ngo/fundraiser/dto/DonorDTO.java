@@ -9,6 +9,7 @@ public class DonorDTO {
     private String email;
     private String LoginPassword;
     private String message;
+    
 	public String getMessage() {
 		return message;
 	}
