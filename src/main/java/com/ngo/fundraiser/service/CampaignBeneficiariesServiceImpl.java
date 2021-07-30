@@ -1,15 +1,20 @@
 package com.ngo.fundraiser.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ngo.fundraiser.dto.CampaignBeneficiariesDTO;
+import com.ngo.fundraiser.dto.CampaignsDTO;
 import com.ngo.fundraiser.entity.Beneficiaries;
 import com.ngo.fundraiser.entity.CampaignBeneficiaries;
 import com.ngo.fundraiser.entity.Campaigns;
+import com.ngo.fundraiser.entity.User;
 import com.ngo.fundraiser.repository.BeneficiariesRepository;
 import com.ngo.fundraiser.repository.CampaignBeneficiariesRepository;
 import com.ngo.fundraiser.repository.CampaignsRepository;
+import com.ngo.fundraiser.repository.UserRepository;
 import com.ngo.fundraiser.utils.CampaignBeneficiariesUtils;
 @Service
 public class CampaignBeneficiariesServiceImpl implements CampaignBeneficiariesService {
@@ -19,19 +24,41 @@ public class CampaignBeneficiariesServiceImpl implements CampaignBeneficiariesSe
 	@Autowired
 	CampaignsRepository campaignRepository;
 	@Autowired
+	UserRepository userRepository;
+	@Autowired
 	BeneficiariesRepository beneficiariesRepository;
 	@Override
 	public CampaignBeneficiariesDTO createCampaignBeneficiary(CampaignBeneficiariesDTO dto) {
 		if(dto!=null)
 		{
-			Campaigns campaigns=this.campaignRepository.findById(dto.getCampaignID()).get();
-			Beneficiaries beneficiaries=this.beneficiariesRepository.findById(dto.getBeneficiaryID()).get();
-			CampaignBeneficiaries campaignBeneficiaries=CampaignBeneficiariesUtils.convertCampaignBeneficieriesDtoztoCampaignBeneficiaries(dto);
-			campaignBeneficiaries.setCampaignID(campaigns);
-			campaignBeneficiaries.setBeneficiaryID(beneficiaries);
-			CampaignBeneficiaries createdCampaignBeneficiaries=this.campaignBeneficiariesRepository.save(campaignBeneficiaries);
 			
-			return CampaignBeneficiariesUtils.convertCampaignBeneficiariestoCamapignBeneficiariesDTO(createdCampaignBeneficiaries);
+			Optional<User> user=this.userRepository.findById(Integer.valueOf(dto.getCreatedBy()));
+			if(user.isPresent())
+			{
+				if(user.get().getRole().getRoleID()==1)
+				{
+				Campaigns campaigns=this.campaignRepository.findById(dto.getCampaignID()).get();
+				Beneficiaries beneficiaries=this.beneficiariesRepository.findById(dto.getBeneficiaryID()).get();
+				CampaignBeneficiaries campaignBeneficiaries=CampaignBeneficiariesUtils.convertCampaignBeneficieriesDtoztoCampaignBeneficiaries(dto);
+				campaignBeneficiaries.setCampaignID(campaigns);
+				campaignBeneficiaries.setBeneficiaryID(beneficiaries);
+				CampaignBeneficiaries createdCampaignBeneficiaries=this.campaignBeneficiariesRepository.save(campaignBeneficiaries);
+				
+				return CampaignBeneficiariesUtils.convertCampaignBeneficiariestoCamapignBeneficiariesDTO(createdCampaignBeneficiaries);
+				}
+				else
+				{
+					CampaignBeneficiariesDTO invalidCampaign=new CampaignBeneficiariesDTO();
+					invalidCampaign.setMessage("Invalid Action Performed by the user you need to be admin to perform this operation");
+					return invalidCampaign;
+				}
+			}
+			else
+			{
+				CampaignBeneficiariesDTO invalidCampaign=new CampaignBeneficiariesDTO();
+				invalidCampaign.setMessage("Invalid createdby user");
+				return invalidCampaign;
+			}
 		}
 		return null;
 	}
@@ -40,12 +67,31 @@ public class CampaignBeneficiariesServiceImpl implements CampaignBeneficiariesSe
 	public CampaignBeneficiariesDTO updateCampaignBeneficiary(CampaignBeneficiariesDTO dto) {
 		
 		if(dto!=null)
-		{
-			CampaignBeneficiaries campaignBeneficiaries=this.campaignBeneficiariesRepository.findById(dto.getcBeneID()).get();
-			if(dto.getDonationValue()!=null)
-				campaignBeneficiaries.setDonationValue(dto.getDonationValue());
-			CampaignBeneficiaries createdCampaignBeneficiaries=this.campaignBeneficiariesRepository.save(campaignBeneficiaries);
-			return CampaignBeneficiariesUtils.convertCampaignBeneficiariestoCamapignBeneficiariesDTO(createdCampaignBeneficiaries);
+		{	
+			Optional<User> user=this.userRepository.findById(Integer.valueOf(dto.getCreatedBy()));
+			if(user.isPresent())
+			{
+				if(user.get().getRole().getRoleID()==1)
+				{
+					CampaignBeneficiaries campaignBeneficiaries=this.campaignBeneficiariesRepository.findById(dto.getcBeneID()).get();
+					if(dto.getDonationValue()!=null)
+						campaignBeneficiaries.setDonationValue(dto.getDonationValue());
+					CampaignBeneficiaries createdCampaignBeneficiaries=this.campaignBeneficiariesRepository.save(campaignBeneficiaries);
+					return CampaignBeneficiariesUtils.convertCampaignBeneficiariestoCamapignBeneficiariesDTO(createdCampaignBeneficiaries);
+				}
+				else
+				{
+					CampaignBeneficiariesDTO invalidCampaign=new CampaignBeneficiariesDTO();
+					invalidCampaign.setMessage("Invalid Action Performed by the user you need to be admin to perform this operation");
+					return invalidCampaign;
+				}
+			}
+			else
+			{
+				CampaignBeneficiariesDTO invalidCampaign=new CampaignBeneficiariesDTO();
+				invalidCampaign.setMessage("Invalid createdby user");
+				return invalidCampaign;
+			}
 		}
 		return null;
 	}
@@ -54,9 +100,28 @@ public class CampaignBeneficiariesServiceImpl implements CampaignBeneficiariesSe
 	public CampaignBeneficiariesDTO deleteCampaignBeneficiary(CampaignBeneficiariesDTO dto) {
 		if(dto!=null)
 		{
-			CampaignBeneficiaries campaignBeneficiaries=this.campaignBeneficiariesRepository.findById(dto.getcBeneID()).get();
-			this.campaignBeneficiariesRepository.delete(campaignBeneficiaries);
-			return CampaignBeneficiariesUtils.convertCampaignBeneficiariestoCamapignBeneficiariesDTO(campaignBeneficiaries);
+			Optional<User> user=this.userRepository.findById(Integer.valueOf(dto.getCreatedBy()));
+			if(user.isPresent())
+			{
+				if(user.get().getRole().getRoleID()==1)
+				{
+				CampaignBeneficiaries campaignBeneficiaries=this.campaignBeneficiariesRepository.findById(dto.getcBeneID()).get();
+				this.campaignBeneficiariesRepository.delete(campaignBeneficiaries);
+				return CampaignBeneficiariesUtils.convertCampaignBeneficiariestoCamapignBeneficiariesDTO(campaignBeneficiaries);
+				}
+				else
+				{
+					CampaignBeneficiariesDTO invalidCampaign=new CampaignBeneficiariesDTO();
+					invalidCampaign.setMessage("Invalid Action Performed by the user you need to be admin to perform this operation");
+					return invalidCampaign;
+				}
+			}
+			else
+			{
+				CampaignBeneficiariesDTO invalidCampaign=new CampaignBeneficiariesDTO();
+				invalidCampaign.setMessage("Invalid createdby user");
+				return invalidCampaign;
+			}
 		}
 		return null;
 	}

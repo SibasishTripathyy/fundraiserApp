@@ -18,6 +18,7 @@ public class Beneficiaries {
 	@Column(name = "Address")
 	private String address;
 	
+	
 	@OneToMany(mappedBy = "beneficiaryID")
 	private List<CampaignBeneficiaries> campaignBeneficaries;
 	public Beneficiaries() {}

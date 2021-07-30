@@ -1,8 +1,17 @@
 package com.ngo.fundraiser.service;
 
+import com.ngo.fundraiser.dto.CampaignDonationDTO;
+import com.ngo.fundraiser.dto.CampaignsDTO;
 import com.ngo.fundraiser.dto.DonorDTO;
 import com.ngo.fundraiser.entity.Donor;
 import com.ngo.fundraiser.repository.DonorRepository;
+import com.ngo.fundraiser.utils.CampaignDonationUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +32,28 @@ public class DonorServiceImpl implements DonorService {
         donor.setLoginPassword(donorDTO.getLoginPassword());
 
         return donorRepository.save(donor);
+    }
+    
+    public List<CampaignDonationDTO> getAllDonationOfADonor(String donorId)
+    {
+    	if(donorId!=null)
+    	{
+    		Optional<Donor> donor=this.donorRepository.findById(Long.valueOf(donorId));
+    		
+    		if(donor.isPresent())
+    		{
+    			return donor.get().getCampaignDonations().stream().map((cd)->CampaignDonationUtils.convertCampaignDonationstoCamapignBeneficiariesDTO(cd)).collect(Collectors.toList());
+    		}
+    		else
+    		{
+    			List<CampaignDonationDTO> invalidUser=new ArrayList<>();
+    			CampaignDonationDTO invalidUserCampaign=new CampaignDonationDTO();
+    			invalidUserCampaign.setMessage("Donor doesnot exist for the following id");
+    			invalidUser.add(invalidUserCampaign);
+    			return invalidUser;
+    		}
+    	}
+    	return null;
     }
 
 }

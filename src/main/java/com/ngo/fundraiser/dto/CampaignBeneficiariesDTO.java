@@ -7,6 +7,13 @@ public class CampaignBeneficiariesDTO {
 	private Long beneficiaryID;
 	private Long donationValue;
 	private String message;
+	private String createdBy;
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
 	public String getMessage() {
 		return message;
 	}

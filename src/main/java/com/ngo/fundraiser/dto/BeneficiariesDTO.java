@@ -6,6 +6,13 @@ public class BeneficiariesDTO {
 	private String name;
 	private String address;
 	private String message;
+	private String createdBy;
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
 	public String getMessage() {
 		return message;
 	}

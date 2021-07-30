@@ -1,10 +1,13 @@
 package com.ngo.fundraiser.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +31,19 @@ public class Donor {
     private String email;
     @Column
     private String LoginPassword;
+    
+    @OneToMany(mappedBy = "donorID")
+    private List<CampaignDonation> campaignDonations;
 
-    public Donor() {
+    public List<CampaignDonation> getCampaignDonations() {
+		return campaignDonations;
+	}
+
+	public void setCampaignDonations(List<CampaignDonation> campaignDonations) {
+		this.campaignDonations = campaignDonations;
+	}
+
+	public Donor() {
     }
 
     public Donor(Long donorId) {
