@@ -33,7 +33,7 @@ public class DonorController {
     {
     	return this.donorService.getAllDonationOfADonor(id);
     }
-    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DonorDTO> getAllDonationOfADonor(){
     	return this.donorService.getAllDonor();
     }
