@@ -26,16 +26,23 @@ public class CampaignDonationController {
     {
     	return this.CampaignDonationService.createCampaignDonation(campaignDonationDTO);
     }
-    
+
+    // Campaign Donation cannot be modified or deleted
+
+}
+
+/*
+
     @PutMapping(value="/update", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
     public CampaignDonationDTO updateCampaignBeneficiary(@RequestBody CampaignDonationDTO campaignDonationDTO)
     {
     	return this.CampaignDonationService.updateCampaignDonation(campaignDonationDTO);
     }
-    
+
     @DeleteMapping(value="/remove", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
     public CampaignDonationDTO deleteCampaignBeneficiary(@RequestBody CampaignDonationDTO campaignDonationDTO)
     {
     	return this.CampaignDonationService.deleteCampaignDonation(campaignDonationDTO);
     }
-}
+
+*/

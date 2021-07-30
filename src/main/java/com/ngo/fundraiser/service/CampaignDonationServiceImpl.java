@@ -37,6 +37,10 @@ public class CampaignDonationServiceImpl implements CampaignDonationService{
 		return null;
 	}
 
+}
+
+/*
+
 	@Override
 	public CampaignDonationDTO updateCampaignDonation(CampaignDonationDTO dto) {
 		if(dto!=null)
@@ -48,7 +52,7 @@ public class CampaignDonationServiceImpl implements CampaignDonationService{
 				campaignDonation.setDonationValue(dto.getDonationValue());
 			if(dto.getPaymentDetails()!=null)
 				campaignDonation.setPaymentDetails(dto.getPaymentDetails());
-			
+
 			CampaignDonation createdCampaignDonation=this.campaignDonationRepository.save(campaignDonation);
 			return CampaignDonationUtils.convertCampaignDonationstoCamapignBeneficiariesDTO(createdCampaignDonation);
 		}
@@ -66,4 +70,4 @@ public class CampaignDonationServiceImpl implements CampaignDonationService{
 		return null;
 	}
 
-}
+	 */
