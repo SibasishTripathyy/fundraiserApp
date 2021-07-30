@@ -11,8 +11,17 @@ public class CampaignsDTO {
     private String End_Date;
     private String Status;
     private String CreatedBy;
-    
-    
+
+    private Integer userID;
+
+	public Integer getUserID() {
+		return userID;
+	}
+
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+
 	public CampaignsDTO() {
 		super();
 		// TODO Auto-generated constructor stub

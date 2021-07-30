@@ -3,6 +3,7 @@ package com.ngo.fundraiser.controller;
 import com.ngo.fundraiser.dto.CampaignsDTO;
 import com.ngo.fundraiser.dto.UserDTO;
 import com.ngo.fundraiser.entity.User;
+import com.ngo.fundraiser.exception.RestrictedAccessException;
 import com.ngo.fundraiser.service.CampaignService;
 import com.ngo.fundraiser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class CampaignController {
     }
     
     @PutMapping(value="/update", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-    public CampaignsDTO updateCampaign(@RequestBody CampaignsDTO campaignsDTO)
+    public CampaignsDTO updateCampaign(@RequestBody CampaignsDTO campaignsDTO) throws RestrictedAccessException
     {
     	return this.campaignService.updateCampaign(campaignsDTO);
     }

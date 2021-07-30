@@ -1,5 +1,6 @@
 package com.ngo.fundraiser.service;
 
+import com.ngo.fundraiser.exception.RestrictedAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,28 +33,36 @@ public class CampaignServiceImpl implements CampaignService {
 	}
 
 	@Override
-	public CampaignsDTO updateCampaign(CampaignsDTO dto) {
-		if(dto!=null)
-		{  // User user=this.userRepository.findById(Integer.valueOf(dto.getCreatedBy())).get();
-			Campaigns campaign=this.campaignRepository.findById(dto.getCampaignID()).get();
-			if(dto.getEnd_Date()!=null)
-			campaign.setEnd_Date(dto.getEnd_Date());
-			if(dto.getStart_Date()!=null)
-			campaign.setStart_Date(dto.getStart_Date());
-			if(dto.getName()!=null)
-			campaign.setName(dto.getName());
-			if(dto.getMessage()!=null)
-			campaign.setMessage(dto.getMessage());
-			if(dto.getImageURL()!=null)
-			campaign.setImageURL(dto.getImageURL());
-			if(dto.getTarget_Donation()!=null)
-			campaign.setTarget_Donation(dto.getTarget_Donation());
-			if(dto.getStatus()!=null)
-			campaign.setStatus(dto.getStatus());
-			Campaigns createdCampaign= this.campaignRepository.save(campaign);
-			return CampaignUtils.convertCampaignstoCamapignsDTO(createdCampaign);
+	public CampaignsDTO updateCampaign(CampaignsDTO dto) throws RestrictedAccessException{
+		if(dto==null) {
+			throw new IllegalArgumentException("DTO is null");
 		}
-		return null;
+
+		Campaigns campaign=this.campaignRepository.findById(dto.getCampaignID()).get();
+		if (!dto.getUserID().equals(campaign.getCreatedBy().getUserID())) {
+			throw new RestrictedAccessException("User is not the owner of the campaign");
+		}
+
+		// For delete mapping exception
+		//campaign.getCreatedBy().getRole().getName();
+
+		if(dto.getEnd_Date()!=null)
+		campaign.setEnd_Date(dto.getEnd_Date());
+		if(dto.getStart_Date()!=null)
+		campaign.setStart_Date(dto.getStart_Date());
+		if(dto.getName()!=null)
+		campaign.setName(dto.getName());
+		if(dto.getMessage()!=null)
+		campaign.setMessage(dto.getMessage());
+		if(dto.getImageURL()!=null)
+		campaign.setImageURL(dto.getImageURL());
+		if(dto.getTarget_Donation()!=null)
+		campaign.setTarget_Donation(dto.getTarget_Donation());
+		if(dto.getStatus()!=null)
+		campaign.setStatus(dto.getStatus());
+		Campaigns createdCampaign= this.campaignRepository.save(campaign);
+		return CampaignUtils.convertCampaignstoCamapignsDTO(createdCampaign);
+
 	}
 
 	@Override
