@@ -6,10 +6,12 @@ import com.ngo.fundraiser.dto.DonorDTO;
 import com.ngo.fundraiser.entity.Donor;
 import com.ngo.fundraiser.repository.DonorRepository;
 import com.ngo.fundraiser.utils.CampaignDonationUtils;
+import com.ngo.fundraiser.utils.DonorUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +57,11 @@ public class DonorServiceImpl implements DonorService {
     	}
     	return null;
     }
+
+	@Override
+	public List<DonorDTO> getAllDonor() {
+		// TODO Auto-generated method stub
+		return this.donorRepository.findAll().stream().map(donor->DonorUtils.convertDonortoDonorDTO(donor)).collect(Collectors.toList());
+	}
 
 }
