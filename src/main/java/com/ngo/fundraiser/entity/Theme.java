@@ -10,7 +10,7 @@ public class Theme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long themeID;
+    private int themeID;
     private String campaignName;
     private String keywords;
 }
