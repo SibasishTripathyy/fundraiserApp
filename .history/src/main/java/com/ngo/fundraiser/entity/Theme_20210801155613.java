@@ -10,7 +10,7 @@ public class Theme {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int themeID;
+    private Long themeID;
     @Column
     private String campaignName;
     @Column
@@ -32,10 +32,10 @@ public class Theme {
 	private List<DonorInterest> donorInterests;
 
 	public Theme() {}
-	public int getThemeID() {
+	public Long getThemeID() {
 		return themeID;
 	}
-	public void setThemeID(int themeID) {
+	public void setThemeID(Long themeID) {
 		this.themeID = themeID;
 	}
 	public String getCampaignName() {

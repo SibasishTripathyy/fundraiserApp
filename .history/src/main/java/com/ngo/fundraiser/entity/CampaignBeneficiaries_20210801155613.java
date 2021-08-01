@@ -9,7 +9,7 @@ public class CampaignBeneficiaries {
 	@GeneratedValue
 	@Id
 	@Column(name = "CBeneID")
-	private int cBeneID;
+	private long cBeneID;
 
 	@ManyToOne
 	@JoinColumn(name="CampaignID")
@@ -20,15 +20,15 @@ public class CampaignBeneficiaries {
 	private Beneficiaries beneficiaryID;
 
 	@Column(name = "DonationValue")
-	private int donationValue;
+	private long donationValue;
 
 	public CampaignBeneficiaries() {}
 
-	public int getcBeneID() {
+	public long getcBeneID() {
 		return cBeneID;
 	}
 
-	public void setcBeneID(int cBeneID) {
+	public void setcBeneID(long cBeneID) {
 		this.cBeneID = cBeneID;
 	}
 
@@ -48,11 +48,11 @@ public class CampaignBeneficiaries {
 		this.beneficiaryID = beneficiaryID;
 	}
 
-	public int getDonationValue() {
+	public long getDonationValue() {
 		return donationValue;
 	}
 
-	public void setDonationValue(int donationValue) {
+	public void setDonationValue(long donationValue) {
 		this.donationValue = donationValue;
 	}
 

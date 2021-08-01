@@ -10,7 +10,7 @@ public class Campaigns {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int CampaignID;
+    private Long CampaignID;
     
     @Column(name = "name")
     private String Name;
@@ -39,7 +39,7 @@ public class Campaigns {
     public Campaigns() {
     }
 
-    public Campaigns(int campaignID, String name, String imageURL, String message, String target_Donation,
+    public Campaigns(Long campaignID, String name, String imageURL, String message, String target_Donation,
                      String start_Date, String end_Date, String status, User createdBy) {
         CampaignID = campaignID;
         Name = name;
@@ -52,11 +52,11 @@ public class Campaigns {
         CreatedBy = createdBy;
     }
 
-    public int getCampaignID() {
+    public Long getCampaignID() {
         return CampaignID;
     }
 
-    public void setCampaignID(int campaignID) {
+    public void setCampaignID(Long campaignID) {
         CampaignID = campaignID;
     }
 
