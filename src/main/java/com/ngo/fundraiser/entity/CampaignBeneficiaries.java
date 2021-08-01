@@ -2,54 +2,67 @@ package com.ngo.fundraiser.entity;
 
 import javax.persistence.*;
 import java.util.List;
-
 @Entity
+@Table(name = "CampaignBeneficiaries")
 public class CampaignBeneficiaries {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cBeneID;
+	@GeneratedValue
+	@Id
+	@Column(name = "CBeneID")
+	private long cBeneID;
 
-    // added for bi directional to campaigns table
-    @ManyToOne
-    @JoinColumn(name = "campaignID")
-    private Campaigns campaignId;
+	@ManyToOne
+	@JoinColumn(name="CampaignID")
+	CampaignThemes campaignID;
+	
+	@ManyToOne
+	@JoinColumn(name="beneficiaryID")
+	private Beneficiaries beneficiaryID;
 
-    // for beneficiaries table
-    @OneToMany(mappedBy = "cBeneID", cascade = CascadeType.ALL)
-    private List<Beneficiaries> beneficiaries;
+	@Column(name = "DonationValue")
+	private long donationValue;
 
-    private int DonationValue;
+	public CampaignBeneficiaries() {}
 
-    public Long getCBeneID() {
-        return cBeneID;
-    }
+	public long getcBeneID() {
+		return cBeneID;
+	}
 
-    public void setCBeneID(Long cBeneID) {
-        this.cBeneID = cBeneID;
-    }
+	public void setcBeneID(long cBeneID) {
+		this.cBeneID = cBeneID;
+	}
 
-    public Campaigns getCampaignId() {
-        return campaignId;
-    }
+	public CampaignThemes getCampaignID() {
+		return campaignID;
+	}
 
-    public void setCampaignId(Campaigns campaignId) {
-        this.campaignId = campaignId;
-    }
+	public void setCampaignID(CampaignThemes campaignID) {
+		this.campaignID = campaignID;
+	}
 
-    public List<Beneficiaries> getBeneficiaries() {
-        return beneficiaries;
-    }
+	public Beneficiaries getBeneficiaryID() {
+		return beneficiaryID;
+	}
 
-    public void setBeneficiaries(List<Beneficiaries> beneficiaries) {
-        this.beneficiaries = beneficiaries;
-    }
+	public void setBeneficiaryID(Beneficiaries beneficiaryID) {
+		this.beneficiaryID = beneficiaryID;
+	}
 
-    public int getDonationValue() {
-        return DonationValue;
-    }
+	public long getDonationValue() {
+		return donationValue;
+	}
 
-    public void setDonationValue(int donationValue) {
-        DonationValue = donationValue;
-    }
+	public void setDonationValue(long donationValue) {
+		this.donationValue = donationValue;
+	}
+
+/*	@OneToMany
+	List<CampaignsEntity> campaignsEntity;	
+
+	@OneToMany
+	List<CampaignBeneficiariesEntity> campaignBeneficiariesEntity;
+
+	@OneToMany
+	List<CampaignDonationsEntity> campaignDonationsEntity;	*/
 }
+

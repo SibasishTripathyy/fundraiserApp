@@ -7,12 +7,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private int userID;
+    @Column
     private String name;
+    @Column
     private String password;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

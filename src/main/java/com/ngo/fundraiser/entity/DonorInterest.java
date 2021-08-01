@@ -1,55 +1,72 @@
 package com.ngo.fundraiser.entity;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Donor_Interest")
 public class DonorInterest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long donorInterestID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+   	@Column(name = "DonorInterestID")
+	private long donorInterestID;
 
-    // Donor Interest to Donor table
-    @ManyToOne
-    @JoinColumn(name = "donorId")
-    private Donor donorId;
+    // From DonorInterest to Theme
+	@ManyToOne
+	@JoinColumn(name="themeId")
+	private Theme themeID;
 
-    // Donor Interest to Themes table
-    @ManyToOne
-    @JoinColumn(name = "themeId")
-    private Theme themeId;
+	// From DonorInterest to Donor
+	@ManyToOne
+	@JoinColumn(name="donorID")
+	private Donor donorID;
 
-    private int BudgetedValue;
+	@Column(name = "BudgetedValue")
+	private long budgetedValue;
 
-    public Long getDonorInterestID() {
-        return donorInterestID;
-    }
+	public DonorInterest() {}
 
-    public void setDonorInterestID(Long donorInterestID) {
-        this.donorInterestID = donorInterestID;
-    }
+	public long getDonorInterestID() {
+		return donorInterestID;
+	}
 
-    public Donor getDonorId() {
-        return donorId;
-    }
+	public void setDonorInterestID(long donorInterestID) {
+		this.donorInterestID = donorInterestID;
+	}
 
-    public void setDonorId(Donor donorId) {
-        this.donorId = donorId;
-    }
+	public Theme getThemeID() {
+		return themeID;
+	}
 
-    public Theme getThemeId() {
-        return themeId;
-    }
+	public void setThemeID(Theme themeID) {
+		this.themeID = themeID;
+	}
 
-    public void setThemeId(Theme themeId) {
-        this.themeId = themeId;
-    }
+	public Donor getDonorID() {
+		return donorID;
+	}
 
-    public int getBudgetedValue() {
-        return BudgetedValue;
-    }
+	public void setDonorID(Donor donorID) {
+		this.donorID = donorID;
+	}
 
-    public void setBudgetedValue(int budgetedValue) {
-        BudgetedValue = budgetedValue;
-    }
-}
+	public long getBudgetedValue() {
+		return budgetedValue;
+	}
+
+	public void setBudgetedValue(long budgetedValue) {
+		this.budgetedValue = budgetedValue;
+	}
+	
+	
+	}
+	
