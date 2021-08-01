@@ -10,7 +10,7 @@ public class Donor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private int donorId;
+    private Long donorId;
 
     @Column
     private String name;
@@ -32,15 +32,15 @@ public class Donor {
     public Donor() {
     }
 
-    public Donor(int donorId) {
+    public Donor(Long donorId) {
         this.donorId = donorId;
     }
 
-    public int getDonorId() {
+    public Long getDonorId() {
         return donorId;
     }
 
-    public void setDonorId(int donorId) {
+    public void setDonorId(Long donorId) {
         this.donorId = donorId;
     }
 

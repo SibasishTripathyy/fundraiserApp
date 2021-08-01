@@ -19,10 +19,10 @@ public class CampaignThemes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-	private int cTID;
+	private Long cTID;
     
     @Column(name = "CampaignID")
-	private int campaignID;
+	private long campaignID;
 
     @ManyToOne
 	@JoinColumn(name="themeID")
@@ -31,11 +31,11 @@ public class CampaignThemes {
    
     public CampaignThemes() {}
     
-	public int getCampaignID() {
+	public long getCampaignID() {
 		return campaignID;
 	}
 
-	public void setCampaignID(int campaignID) {
+	public void setCampaignID(long campaignID) {
 		this.campaignID = campaignID;
 	}
 
@@ -48,11 +48,11 @@ public class CampaignThemes {
 		this.themeID = themeID;
 	}
 	
-	public int getcTID() {
+	public Long getcTID() {
 		return cTID;
 	}
 
-	public void setcTID(int cTID) {
+	public void setcTID(Long cTID) {
 		this.cTID = cTID;
 	}
 	

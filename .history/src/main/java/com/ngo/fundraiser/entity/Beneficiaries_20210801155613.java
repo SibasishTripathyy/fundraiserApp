@@ -10,7 +10,7 @@ public class Beneficiaries {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int beneficiaryID;
+	private long beneficiaryID;
 	
 	@Column(name = "Name")
 	private String name;
@@ -22,11 +22,11 @@ public class Beneficiaries {
 	private List<CampaignBeneficiaries> campaignBeneficaries;
 	public Beneficiaries() {}
 
-	public int getBeneficiaryID() {
+	public long getBeneficiaryID() {
 		return beneficiaryID;
 	}
 
-	public void setBeneficiaryID(int beneficiaryID) {
+	public void setBeneficiaryID(long beneficiaryID) {
 		this.beneficiaryID = beneficiaryID;
 	}
 
